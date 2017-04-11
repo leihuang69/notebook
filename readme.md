@@ -30,25 +30,25 @@ npm test
 ```
 ## 文件结构
 
-├── client  <!--- 客户端主入口 -->
+├── client 
 │   ├── main.html 
 │   ├── main.js
 │   └── main.scss
 ├── imports
-│   ├── api  <!--- 连接MongoDB数据库，并定义 CRUD 操作-->
+│   ├── api 
 │   │   ├── notes.js
-│   │   ├── notes.test.js <!--- 测试文件，以下带test.js 后缀的文件同 -->
+│   │   ├── notes.test.js
 │   │   ├── users.js
 │   │   └── users.test.js
 │   ├── client
-│   │   └── styles <!--- 样式文件 -->
-│   ├── fixtures <!--- 测试数据 -->
+│   │   └── styles
+│   ├── fixtures
 │   │   └── fixtures.js
 │   ├── routes 
-│   │   └── routes.js <!--- 前端路由 -->
+│   │   └── routes.js
 │   ├── startup
-│   │   └── simple-schema-configuration.js <!--- SimpleSchema 验证插件的设置，用来验证邮箱和密码的输入 -->
-│   └── ui <!--- UI 组件 -->
+│   │   └── simple-schema-configuration.js 
+│   └── ui
 │       ├── Dashboard.js
 │       ├── Editor.js
 │       ├── Editor.test.js
@@ -73,6 +73,6 @@ npm test
 │       ├── favicon.png
 │       └── x.svg
 ├── readme.md
-└── server <!--- 服务器配置文件 -->
+└── server
     └── main.js
 
