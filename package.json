@@ -1,5 +1,5 @@
 {
-  "name": "short-lnk",
+  "name": "simple-notebook",
   "private": true,
   "scripts": {
     "start": "meteor run",

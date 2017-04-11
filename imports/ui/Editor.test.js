@@ -20,12 +20,13 @@ if (Meteor.isClient) {
 
     it('用户未选择笔记是，应提示选择', function () {
       const wrapper = mount(<Editor browserHistory={browserHistory} call={call}/>);
-      expect(wrapper.find('p').text()).toBe('选择或创建新笔记以开始。');
+
+      expect(wrapper.find('p').slice(0,1).text()).toBe('在左侧选择或创建笔记。');
     });
 
     it('笔记不存在时，应该显示未找到笔记', function () {
       const wrapper = mount(<Editor browserHistory={browserHistory} call={call} selectedNoteId={notes[0]._id}/>);
-      expect(wrapper.find('p').text()).toBe('未找到笔记。');
+      expect(wrapper.find('p').slice(0,1).text()).toBe('未找到笔记。');
     });
 
     it('移除笔记功能测试', function () {
