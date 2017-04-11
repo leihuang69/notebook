@@ -23,7 +23,6 @@ export class Signup extends React.Component {
     this.props.createUser({email, password}, (err) => {
       if (err) {
         this.setState({error: '请输入合法邮箱！'});
-        // this.setState({error: err.reason});
       } else {
         this.setState({error: ''});
       }

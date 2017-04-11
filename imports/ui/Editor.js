@@ -14,20 +14,28 @@ export class Editor extends React.Component {
       body: ''
     };
   }
+
+  // 处理更新正文操作
   handleBodyChange(e) {
     const body = e.target.value;
     this.setState({ body });
     this.props.call('notes.update', this.props.note._id, { body });
   }
+
+  // 处理更新标题操作
   handleTitleChange(e) {
     const title = e.target.value;
     this.setState({ title });
     this.props.call('notes.update', this.props.note._id, { title });
   }
+
+  // 处理删除操作
   handleRemoval(){
     this.props.call('notes.remove', this.props.note._id);
     this.props.browserHistory.push('/dashboard');
   }
+
+  // 组件更新时，依据现有ID判断是否显示内容
   componentDidUpdate(prevProps, prevState) {
     const currentNoteId = this.props.note ? this.props.note._id : undefined;
     const prevNoteId = prevProps.note ? prevProps.note._id : undefined;
@@ -40,6 +48,7 @@ export class Editor extends React.Component {
     }
   }
   render() {
+    // note通过Container传入
     if (this.props.note) {
       return (
         <div className="editor">
@@ -53,8 +62,11 @@ export class Editor extends React.Component {
     } else {
       return (
         <div className="editor">
-          <p className="editor__message">
-            { this.props.selectedNoteId ? '未找到笔记。' : '选择或创建新笔记以开始。'}
+          <p className="editor__message--desktop">
+            { this.props.selectedNoteId ? '未找到笔记。' : '在左侧选择或创建笔记。'}
+          </p>
+          <p className="editor__message--mobile">
+            { this.props.selectedNoteId ? '未找到笔记。' : '点击左上角按钮创建笔记。'}
           </p>
         </div>
       );
@@ -69,7 +81,10 @@ Editor.propTypes = {
   browserHistory: React.PropTypes.object.isRequired
 };
 
+// createContainer() 为react-meteor-data提供的方法，用于创建状态管理容器，对应Redux的createStore()
 export default createContainer(() => {
+
+  // 通过Session 获得选中的ID，后者在 NoteListItem 组件中通过 Session.set 设置
   const selectedNoteId = Session.get('selectedNoteId');
 
   return {

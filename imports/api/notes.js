@@ -3,6 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import moment from 'moment';
 import SimpleSchema from 'simpl-schema';
 
+// 创建新的Collection
 export const Notes = new Mongo.Collection('notes');
 
 if (Meteor.isServer) {
@@ -11,6 +12,7 @@ if (Meteor.isServer) {
   });
 }
 
+// 定义Meteor的 CRUD 操作
 Meteor.methods({
   'notes.insert'() {
     if (!this.userId) {
@@ -29,6 +31,7 @@ Meteor.methods({
       throw new Meteor.Error('not-authorized');
     }
 
+    // 借助 SimpleSchema 来验证ID，保证安全
     new SimpleSchema({
       _id: {
         type: String,

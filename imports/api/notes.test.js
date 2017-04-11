@@ -20,6 +20,7 @@ if (Meteor.isServer) {
       userId: 'testUserId2'
     };
 
+    // 每一个新的测试前，清除历史数据，并插入新的数据
     beforeEach(function () {
       Notes.remove({});
       Notes.insert(noteOne);

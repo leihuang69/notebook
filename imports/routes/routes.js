@@ -8,6 +8,7 @@ import Dashboard from '../ui/Dashboard';
 import NotFound from '../ui/NotFound';
 import Login from '../ui/Login';
 
+// 进入笔记页面时，在Meteor.Session里设置选中ID
 const onEnterNotePage = (nextState) => {
   Session.set('selectedNoteId', nextState.params.id);
 };
@@ -19,14 +20,18 @@ export const onAuthChange = (isAuthenticated, currentPagePrivacy) => {
   const isAuthenticatedPage = currentPagePrivacy === 'auth';
 
   if (isUnauthenticatedPage && isAuthenticated) {
+    // 已登录而处于欢迎页面时，自动跳转到后台
     browserHistory.replace('/dashboard');
   } else if (isAuthenticatedPage && !isAuthenticated) {
+    // 位于后台却未登录，自动跳转到主页
     browserHistory.replace('/');
   }
 };
 export const globalOnChange = (prevState, nextState) => {
   globalOnEnter(nextState);
 };
+
+// 进入首页时，设置当前页面隐私为上一个路由隐私状态。保证隐私授权一致
 export const globalOnEnter = (nextState) => {
   const lastRoute = nextState.routes[nextState.routes.length - 1];
   Session.set('currentPagePrivacy', lastRoute.privacy);
