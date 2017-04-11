@@ -1,8 +1,8 @@
 # 笔记本应用
 
-此笔记本应用为学习 Meteor 全栈开发的练习作品。应用采用 Meteor 和 React 搭建而成。Meteor 处理后端的搭建以及前后端的数据通信。通过DDP (Distributed Data Protocol)，Meteor 采用了Websocket 通信协议，当后台数据变化时，可以自动向前端推送数据。利用此技术，本应用实现了前后端同步数据更新。同时，前端采用 miniMongo 技术，使得用户输入和交互实时发生无延迟，提升了用户体验。
+此笔记本应用为学习 Meteor 全栈开发的练习作品。应用采用 Meteor 和 React 搭建而成。Meteor 处理后端的搭建以及前后端的数据通信。通过采用 DDP (Distributed Data Protocol，基于 Websocket 的通信协议)，当后台数据变化时，Meteor 可以自动向前端推送数据，从而实现了前后端同步数据更新。同时，前端采用 miniMongo 技术，使得用户输入和交互实时发生无延迟，提升了用户体验。
 
-React UI 状态管理采用了与 Meteor 搭配的 react-meteor-data，赞未采用Redux。另外，Meteor 的 Session 对象也用来实现前端的 UI 响应。
+React UI 状态管理采用了与 Meteor 搭配的 react-meteor-data，暂未采用Redux。另外，Meteor 的 Session 对象也用来实现前端的 UI 响应。
 
 样式编写采用了 BEM 原则和移动端优先原则，同时对样式文件进行了模块化，保证了长期的开发维护和扩展。
 
@@ -30,7 +30,8 @@ npm test
 ```
 ## 文件结构
 
-├── client 
+``` javascript
+├── client
 │   ├── main.html 
 │   ├── main.js
 │   └── main.scss
@@ -75,4 +76,4 @@ npm test
 ├── readme.md
 └── server
     └── main.js
-
+```
