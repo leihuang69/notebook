@@ -61,8 +61,8 @@ export class Editor extends React.Component {
       );
     } else {
       return (
+        // 移动端和桌面端渲染不同内容
         <div className="editor">
-
           {
             this.props.onMobile ? <p className="editor__message">
             { this.props.selectedNoteId ? '未找到笔记。' : '点击左上角按钮创建笔记。'}
@@ -71,7 +71,6 @@ export class Editor extends React.Component {
                 { this.props.selectedNoteId ? '未找到笔记。' : '在左侧选择或创建笔记。'}
             </p>
           }
-
         </div>
       );
     }
