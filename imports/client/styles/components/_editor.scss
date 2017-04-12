@@ -26,21 +26,8 @@
    -webkit-overflow-scrolling: touch;
 }
 
-.editor__message--mobile {
+.editor__message {
   text-align: center;
   margin: $large-space * 2;
   font-style: italic;
-  @include desktop {
-    display: none;
-    }
 }
-
-.editor__message--desktop {
-  text-align: center;
-  margin: $large-space * 2;
-  font-style: italic;
-  @include mobile {
-    display: none;
-    }
-}
-

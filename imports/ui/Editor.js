@@ -62,12 +62,16 @@ export class Editor extends React.Component {
     } else {
       return (
         <div className="editor">
-          <p className="editor__message--desktop">
-            { this.props.selectedNoteId ? '未找到笔记。' : '在左侧选择或创建笔记。'}
-          </p>
-          <p className="editor__message--mobile">
+
+          {
+            this.props.onMobile ? <p className="editor__message">
             { this.props.selectedNoteId ? '未找到笔记。' : '点击左上角按钮创建笔记。'}
-          </p>
+
+            </p> : <p className="editor__message">
+                { this.props.selectedNoteId ? '未找到笔记。' : '在左侧选择或创建笔记。'}
+            </p>
+          }
+
         </div>
       );
     }
@@ -76,6 +80,7 @@ export class Editor extends React.Component {
 
 Editor.propTypes = {
   note: React.PropTypes.object,
+  onMobile: React.PropTypes.bool,
   selectedNoteId: React.PropTypes.string,
   call: React.PropTypes.func.isRequired,
   browserHistory: React.PropTypes.object.isRequired
@@ -86,9 +91,11 @@ export default createContainer(() => {
 
   // 通过Session 获得选中的ID，后者在 NoteListItem 组件中通过 Session.set 设置
   const selectedNoteId = Session.get('selectedNoteId');
+  var onMobile = window.matchMedia("(max-width: 50rem)").matches;
 
   return {
     selectedNoteId,
+    onMobile,
     note: Notes.findOne(selectedNoteId),
     call: Meteor.call,
     browserHistory
